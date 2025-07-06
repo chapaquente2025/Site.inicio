@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Pay - Ganhe grana com sua opinião!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom right, #ff005a, #00f2ea);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .login, .conteudo, .saque, .taxa {
+      display: none;
+      max-width: 380px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    input, select, button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #fff;
+      font-size: 16px;
+      background-color: #222;
+      color: #fff;
+    }
+    input, select {
+      font-size: 1rem;
+    }
+    button {
+      background-color: #00f2ea;
+      color: #222;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff005a;
+      color: #fff;
+    }
+    .visible { display: block; }
+    .saque p {
+      font-size: 1rem;
+      margin-top: 15px;
+    }
+    .taxa p {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>TikTok Pay</h1>
+  <div class="login visible">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Seu email" />
+    <input type="password" id="senha" placeholder="Senha" />
+    <button onclick="fazerLogin()">Entrar</button>
+  </div>
+
+  <div class="conteudo">
+    <h2>Que tipo de conteúdo VOCÊ curte no TikTok?</h2>
+    <select id="resposta">
+      <option>Comédia</option>
+      <option>Ensinamento</option>
+      <option>Jogos</option>
+    </select>
+    <button onclick="responderPergunta()">Responder</button>
+  </div>
+
+  <div class="saque">
+    <h2>Você ganhou R$120,00!</h2>
+    <p>Escolha uma forma de saque:</p>
+    <select id="forma">
+      <option>Chave Aleatória (Pix)</option>
+      <option>E-mail</option>
+      <option>CPF</option>
+    </select>
+    <input type="text" id="chave" placeholder="Digite a chave Pix ou info" />
+    <button onclick="mostrarTaxa()">Solicitar Saque</button>
+  </div>
+
+  <div class="taxa">
+    <h2>Taxa Antifraude</h2>
+    <p>Para liberar seu saque com segurança, pague uma pequena taxa de R$14,90.</p>
+    <p>Ao pagar, você também recebe um curso completo de como viralizar no TikTok!</p>
+    <a href="https://pay.hotmart.com/A100211821W" target="_blank">
+      <button>Pagar e Receber Curso</button>
+    </a>
+    <p>Após o pagamento, você receberá o acesso ao curso e seu saque será processado automaticamente.</p>
+  </div>
+
+  <script>
+    function fazerLogin() {
+      document.querySelector('.login').classList.remove('visible');
+      document.querySelector('.conteudo').classList.add('visible');
+    }
+
+    function responderPergunta() {
+      document.querySelector('.conteudo').classList.remove('visible');
+      document.querySelector('.saque').classList.add('visible');
+    }
+
+    function mostrarTaxa() {
+      const chave = document.getElementById('chave').value;
+      if (chave.trim() !== '') {
+        document.querySelector('.saque').classList.remove('visible');
+        document.querySelector('.taxa').classList.add('visible');
+      } else {
+        alert('Digite sua chave de saque');
+      }
+    }
+  </script>
+</body>
+</html>
